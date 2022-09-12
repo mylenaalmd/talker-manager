@@ -13,4 +13,20 @@ router.get('/', async (_req, res) => {
   return res.status(HTTP_OK_STATUS).json(talker);
 });
 
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const talker = await data();
+  
+  try {
+    const talkeer = talker.find((item) => item.id === Number(id));
+    if (!talkeer) {
+       res.status(404).json({ message: 'Pessoa palestrante não encontrada',
+     });
+    } 
+    return res.status(HTTP_OK_STATUS).json(talkeer);
+  } catch (err) {
+    console.error('Error', err);
+  }
+});
+
 module.exports = router;
