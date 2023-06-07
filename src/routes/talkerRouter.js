@@ -28,6 +28,7 @@ router.get('/search', tokenValidation, async (req, res) => {
     }
     return res.status(HTTP_OK_STATUS).json(filterTalker);
 });
+
 router.get('/', async (_req, res) => {
   const talker = await data();
   if (talker.length === 0) {
